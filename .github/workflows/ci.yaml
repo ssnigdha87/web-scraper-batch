@@ -33,3 +33,6 @@ jobs:
 
       - name: Run scraper
         run: uv run python src/scraper/main.py
+        
+      - name: Build container image
+        run: docker build -t web-scraper-batch:ci .
