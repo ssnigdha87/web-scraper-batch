@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: CronJob
+
+metadata:
+  name: scraper-cronjob
+
+spec:
+  schedule: "*/5 * * * *"
+
+  jobTemplate:
+
+    spec:
+
+      template:
+
+        spec:
+
+          containers:
+            - name: scraper
+
+              image: localhost/web-scraper-batch:v2
+              imagePullPolicy: Never
+
+              volumeMounts:
+                - name: scraper-output
+                  mountPath: /app/output
+
+          restartPolicy: OnFailure
+
+          volumes:
+            - name: scraper-output
+
+              hostPath:
+                path: /tmp/scraper-output
+                type: DirectoryOrCreate
