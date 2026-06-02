@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime
+import os
 
 
 def scrape_quotes():
@@ -27,6 +28,8 @@ def scrape_quotes():
         )
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    os.makedirs("output", exist_ok=True)
 
     file_name = f"output/quotes_{timestamp}.csv"
 
