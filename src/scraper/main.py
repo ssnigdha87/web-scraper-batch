@@ -28,7 +28,7 @@ def scrape_quotes():
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    file_name = f"quotes_{timestamp}.csv"
+    file_name = f"output/quotes_{timestamp}.csv"
 
     df = pd.DataFrame(data)
 
